@@ -1,54 +1,24 @@
-import DeployButton from "../components/DeployButton";
 import AuthButton from "../components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
-import ConnectSupabaseSteps from "@/components/tutorial/ConnectSupabaseSteps";
-import SignUpUserSteps from "@/components/tutorial/SignUpUserSteps";
-import Header from "@/components/Header";
+
 
 export default async function Index() {
-  const canInitSupabaseClient = () => {
-    // This function is just for the interactive tutorial.
-    // Feel free to remove it once you have Supabase connected.
-    try {
-      createClient();
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
 
-  const isSupabaseConnected = canInitSupabaseClient();
 
   return (
-    <div className="flex-1 w-full flex flex-col gap-20 items-center">
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-        <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-          <DeployButton />
-          {isSupabaseConnected && <AuthButton />}
-        </div>
-      </nav>
-
-      <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
-        <Header />
-        <main className="flex-1 flex flex-col gap-6">
-          <h2 className="font-bold text-4xl mb-4">Next steps</h2>
-          {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-        </main>
-      </div>
-
-      <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
-        <p>
-          Powered by{" "}
-          <a
-            href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
-          >
-            Supabase
-          </a>
-        </p>
-      </footer>
+    <div className="flex flex-col gap-20 items-center">
+      {/* Just a example, but you should find a better place to put this btn */}
+      <AuthButton/>
+      <h1>Hello World</h1>
+      <h2>Scroll down to see the footer</h2>
+      <p>step1</p>
+      <p>Go to your supabase Authentication </p>
+      <p>Providers then on email, just enable the first option and save.</p>
+      <p>step2</p>
+      <p>Make sure to create the .env file and like to your db: </p>
+      <p>ex: NEXT_PUBLIC_SUPABASE_URL=https://ynntyetyphkdqgbf.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=zdXBhYmFzZSIsInJlZiI6InlubnR5ZXRwZXZ3eXBoa2RxZ2JmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ1ODA0MTgsImV4cCI6MjAzMDE1NjQxOH0.ymWYX8liJMVpywxyb4PAWArTdParX8gHrNjqmdVR10U</p>
+      <p>SignUp and then Sign In :) , Once you sign In you will get redirected by default to a protected page that onlys shows when the person is logged in!</p>
     </div>
   );
 }
